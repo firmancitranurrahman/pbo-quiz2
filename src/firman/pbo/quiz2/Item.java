@@ -10,20 +10,23 @@ package firman.pbo.quiz2;
  * @author ASUS 10.1
  */
 public class Item {
-   private String namaBarang;
-   private double harga;
-   private String satuan;
-   
-    public Item(String namaBarang, double harga, String satuan) {
+   private String namaBarang; //nama barang 
+   private float harga; // harga barang 
+   private int satuan; // satuan barang
+   public Item(){
+       
+   }
+    public Item(String namaBarang, float harga,int satuan) {
         this.namaBarang = namaBarang;
         this.harga = harga;
         this.satuan = satuan;
     }
 
+    //getter namaBarang
     public String getNamaBarang() {
         return namaBarang;
     }
-
+    //setter namaBarang
     public void setNamaBarang(String namaBarang) {
         this.namaBarang = namaBarang;
     }
@@ -37,15 +40,19 @@ public class Item {
         return harga;
     }
 
-    public void setHarga(double harga) {
+    public void setHarga(float harga) {
         this.harga = harga;
     }
 
-    public String getSatuan() {
+    public int getSatuan() {
         return satuan;
     }
 
-    public void setSatuan(String satuan) {
+    public void setSatuan(int satuan) {
         this.satuan = satuan;
-    }    
+    }  
+    public float getTotal(){
+        return this.harga * this.satuan;
+    }
 }
+  
