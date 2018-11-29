@@ -197,6 +197,11 @@ public class JTransaksi extends javax.swing.JFrame {
         });
 
         jButtonSave.setText("Save");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
 
         jButtonCancel.setText("Cancel");
 
@@ -326,6 +331,25 @@ public class JTransaksi extends javax.swing.JFrame {
     private void jTextFieldSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSatuanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSatuanActionPerformed
+
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        // TODO add your handling code here:
+        try {
+            for(int i=0;i<tblModel.getRowCount();i++){
+                String nama= tblModel.getValueAt(i, 0).toString();
+                float harga=new Float(tblModel.getValueAt(i,1).toString());
+                int satuan=new Integer(tblModel.getValueAt(i,1).toString());
+                 this.keranjang.add(new Item(nama,harga,satuan));
+            }
+            Transaksi trs= new Transaksi(this.kode, this.keranjang);
+            StringBuilder sb= new StringBuilder();
+            sb.append(trs.strukDetail());
+            JOptionPane.showMessageDialog(this,sb,"DETAIL TRANSAKSI",JOptionPane.INFORMATION_MESSAGE);
+            newTransaksi();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
     /**
      * @param args the command line arguments
