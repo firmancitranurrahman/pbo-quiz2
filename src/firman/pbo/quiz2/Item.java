@@ -12,15 +12,15 @@ package firman.pbo.quiz2;
 public class Item {
    private String namaBarang; //nama barang 
    private float harga; // harga barang 
-   private int satuan; // satuan barang
-   public Item(String namaBarang, int satuan){
+   private int jumlah; // satuan barang
+   public Item(String namaBarang, int jumlah){
        this.namaBarang=namaBarang;
-       this.satuan=satuan;
+       this.jumlah=jumlah;
    }
-    public Item(String namaBarang, float harga,int satuan) {
+    public Item(String namaBarang, float harga,int jumlah) {
         this.namaBarang = namaBarang;
         this.harga = harga;
-        this.satuan = satuan;
+        this.jumlah=jumlah;
        switch(this.namaBarang){
            case "Kopi":this.harga=10000;
            break;
@@ -53,15 +53,15 @@ public class Item {
         this.harga = harga;
     }
 
-    public int getSatuan() {
-        return satuan;
+    public int getJumlah() {
+        return jumlah;
     }
 
-    public void setSatuan(int satuan) {
-        this.satuan = satuan;
+    public void setJumlah(int jumlah) {
+        this.jumlah = jumlah;
     }  
     public float getTotal(){
-        return this.harga * this.satuan;
+        return this.harga * this.jumlah;
     }
 }
   
