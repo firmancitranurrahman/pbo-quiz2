@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ASUS 10.1
  */
 public class JTransaksi extends javax.swing.JFrame {
-    private  int id;
+    private  int id=1;
     private String kode;
     private  DefaultTableModel tblModel;
     private  DefaultComboBoxModel cbxModel;
@@ -204,6 +204,11 @@ public class JTransaksi extends javax.swing.JFrame {
         });
 
         jButtonCancel.setText("Cancel");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
 
         jTextFieldSatuan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -350,6 +355,12 @@ public class JTransaksi extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        // TODO add your handling code here:
+        newTransaksi();
+        this.decerementId();
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
     /**
      * @param args the command line arguments
