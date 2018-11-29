@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package firman.pbo.quiz2;
-import javax.swing.table.TableModel;
+import javax.swing.table.*;
+;
 /**
  *
  * @author ASUS 10.1
  */
-public class TransaksiTableModel {
+public class TransaksiTableModel extends DefaultTableModel{
      private String[] kolom; // kolom digunakan untuk tempat menyimpan nama
     
     // Constructor
@@ -24,6 +25,22 @@ public class TransaksiTableModel {
         return this.kolom;
     }
 
+    @Override
+    public void setRowCount(int rowCount) {
+        super.setRowCount(rowCount); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addRow(Object[] os) {
+        super.addRow(os); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeRow(int i) {
+       super.removeRow(i); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
 
    
