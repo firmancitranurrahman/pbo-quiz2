@@ -20,7 +20,7 @@ public class TransaksiTableModel {
     }
     
     // kolom getter
-    public String[] getColumnName() {
+    public String[] getNamaKolom() {
         return this.kolom;
     }
 
