@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -296,6 +297,16 @@ public class JTransaksi extends javax.swing.JFrame {
 
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
         // TODO add your handling code here:
+        if(jTableTransaksi.getSelectedRow()<0){
+            String struk="pilih item yang akan di hapus!";
+            JOptionPane.showMessageDialog(this, struk,"Informasi",JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            int hitung=jTableTransaksi.getSelectedRows().length;
+            for(int i=0; i<hitung;i++){
+                tblModel.removeRow(jTableTransaksi.getSelectedRow());
+            }
+            this.cekKeranjang();
+        }
       
     
     }//GEN-LAST:event_jButtonRemoveActionPerformed
