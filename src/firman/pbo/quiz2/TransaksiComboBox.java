@@ -23,7 +23,7 @@ public class TransaksiComboBox {
         this.item.put("Rokok", new Float(10000));
     }
     
-    public ArrayList<String> getNames() {
+    public ArrayList<String> getNama() {
         ArrayList<String> struk = new ArrayList<>();
         for(String item : this.item.keySet()) {
             struk.add(item);
@@ -39,8 +39,8 @@ public class TransaksiComboBox {
         return harga;
     }
     
-    public void tambahItem(String name, float price) {
-        this.item.put(name, price);
+    public void tambahItem(String nama, float harga) {
+        this.item.put(nama, harga);
     }
 
 }
