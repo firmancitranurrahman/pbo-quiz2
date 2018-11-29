@@ -13,8 +13,9 @@ public class Item {
    private String namaBarang; //nama barang 
    private float harga; // harga barang 
    private int satuan; // satuan barang
-   public Item(){
-       
+   public Item(String namaBarang, int satuan){
+       this.namaBarang=namaBarang;
+       this.satuan=satuan;
    }
     public Item(String namaBarang, float harga,int satuan) {
         this.namaBarang = namaBarang;
