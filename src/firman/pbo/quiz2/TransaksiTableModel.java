@@ -15,8 +15,8 @@ public class TransaksiTableModel extends DefaultTableModel{
     
     // Constructor
     public TransaksiTableModel() {
-        this.kolom = new String[] {
-            "Nama", "Harga", "Jumlah"
+        this.kolom = new String[]{       
+            "Nama" , "Harga" , "Jumlah"
         };
     }
     
