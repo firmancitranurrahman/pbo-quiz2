@@ -21,6 +21,14 @@ public class Item {
         this.namaBarang = namaBarang;
         this.harga = harga;
         this.satuan = satuan;
+       switch(this.namaBarang){
+           case "Kopi":this.harga=10000;
+           break;
+           case "Gula":this.harga=10000;
+           break;
+           case "Susu":this.harga=10000;
+           break;
+       }
     }
 
     //getter namaBarang
