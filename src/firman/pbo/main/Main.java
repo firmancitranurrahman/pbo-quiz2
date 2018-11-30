@@ -122,17 +122,7 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTableModelList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nama", "Harga", "Jumlah"
-            }
-        ));
+        jTableModelList.setModel(this.tblModel);
         jScrollPane1.setViewportView(jTableModelList);
 
         jComboBoxItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kopi", "Susu", "Gula" }));
@@ -145,6 +135,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         jButtonAdd.setText("Add");
+        jButtonAdd.setEnabled(false);
         jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddActionPerformed(evt);
@@ -152,6 +143,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         jButtonRemove.setText("Remove");
+        jButtonRemove.setEnabled(false);
         jButtonRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRemoveActionPerformed(evt);
@@ -165,6 +157,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         jButtonSave.setText("Save");
+        jButtonSave.setEnabled(false);
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSaveActionPerformed(evt);
@@ -172,6 +165,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         jButtonCancel.setText("Cancel");
+        jButtonCancel.setEnabled(false);
         jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelActionPerformed(evt);
@@ -231,7 +225,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jComboBoxItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jTextFieldJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -263,8 +257,9 @@ public class Main extends javax.swing.JFrame {
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         // TODO add your handling code here:
         String nama= this.jComboBoxItem.getSelectedItem().toString();
+        int jumlah = new Integer (this.jTextFieldJumlah.getText()) ;
         float harga= new Float(this.jTextFieldJumlah.getText());
-        Item item=new Item(nama,harga, WIDTH);
+        Item item=new Item(nama , harga , jumlah);
         if(isDuplicate(nama)){
             updateJumlah(nama, id);
         }else{
@@ -312,6 +307,20 @@ public class Main extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
+        try {
+            for(int i=0;i<tblModel.getRowCount();i++){
+                String nama=tblModel.getValueAt(i,0).toString();
+                float harga=new Float(tblModel.getValueAt(0,1).toString());
+                int jumlah=new Integer(tblModel.getValueAt(i,2).toString());
+                this.belanja.add(new Item(nama, harga, jumlah));
+            }
+            Transaksi trs=new Transaksi(code, belanja);
+            StringBuilder sb= new StringBuilder();
+            sb.append(trs.Pembayaran());
+            JOptionPane.showMessageDialog(this, sb,"Transaksi",JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     /**
